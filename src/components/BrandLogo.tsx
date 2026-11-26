@@ -1,10 +1,14 @@
 import { useState } from 'react';
+import { resolveAssetUrl } from '../utils/assets';
 
 /**
  * Brand logo featuring the founder's studio portrait badge with a crisp </> vector fallback.
  */
 export function BrandLogo({ className = 'h-9 w-9' }: { className?: string }) {
   const [imgFailed, setImgFailed] = useState(false);
+  const portraitSrc = resolveAssetUrl(
+    '/assets/aistudio/Web_Development_Studio_Portrait_06a0eb80.png'
+  );
 
   return (
     <span
@@ -12,7 +16,7 @@ export function BrandLogo({ className = 'h-9 w-9' }: { className?: string }) {
     >
       {!imgFailed ? (
         <img
-          src="/assets/aistudio/Web_Development_Studio_Portrait_06a0eb80.png"
+          src={portraitSrc}
           alt="Web Development brand logo portrait"
           referrerPolicy="no-referrer"
           onError={() => setImgFailed(true)}

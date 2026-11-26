@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Monitor } from 'lucide-react';
+import { resolveAssetUrl } from '../utils/assets';
 
 interface ResilientImageProps {
   src: string;
@@ -15,6 +16,7 @@ export default function ResilientImage({
   fallbackTitle = 'Website Mockup Preview',
 }: ResilientImageProps) {
   const [hasError, setHasError] = useState(false);
+  const resolvedSrc = resolveAssetUrl(src);
 
   if (hasError) {
     return (
@@ -34,7 +36,7 @@ export default function ResilientImage({
 
   return (
     <img
-      src={src}
+      src={resolvedSrc}
       alt={alt}
       referrerPolicy="no-referrer"
       onError={() => setHasError(true)}

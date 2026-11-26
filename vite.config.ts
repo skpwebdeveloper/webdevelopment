@@ -4,14 +4,20 @@ import fs from 'fs';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({command}) => {
+  const base =
+    command === 'serve'
+      ? '/'
+      : process.env.VITE_BASE_PATH || '/webdevelopment/';
+
   return {
+    base,
     plugins: [
       react(),
       tailwindcss(),
       // Copies src/assets into dist/ so root-relative URLs like
-      // "/src/assets/images/..." (e.g. generate_image output) still resolve
-      // in production builds. Do not remove.
+      // "src/assets/images/..." (e.g. generate_image output) still resolve
+      // in production builds under the configured base path. Do not remove.
       {
         name: 'copy-unbundled-src-assets',
         apply: 'build',
