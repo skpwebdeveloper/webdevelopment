@@ -1,0 +1,6 @@
+{
+  "name": "Web Development",
+  "description": "Modern, responsive, and AI-powered website development agency specializing in custom e-commerce stores, Python web applications, and business websites.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
